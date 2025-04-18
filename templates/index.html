@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Accident Severity Prediction{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h3 class="text-center">Accident Severity Prediction</h3>
+            </div>
+            <div class="card-body">
+                <form action="{{ url_for('predict') }}" method="POST">
+                    <div class="mb-3">
+                        <label for="sex_of_driver" class="form-label">Sex of Driver</label>
+                        <select class="form-select" id="sex_of_driver" name="sex_of_driver" required>
+                            <option value="1">Male</option>
+                            <option value="2">Female</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="vehicle_type" class="form-label">Vehicle Type</label>
+                        <select class="form-select" id="vehicle_type" name="vehicle_type" required>
+                            <option value="1">Car</option>
+                            <option value="2">Motorcycle</option>
+                            <option value="3">Truck</option>
+                            <option value="4">Bus</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="speed_limit" class="form-label">Speed Limit (km/h)</label>
+                        <input type="number" class="form-control" id="speed_limit" name="speed_limit" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="road_type" class="form-label">Road Type</label>
+                        <select class="form-select" id="road_type" name="road_type" required>
+                            <option value="1">Single Carriageway</option>
+                            <option value="2">Dual Carriageway</option>
+                            <option value="3">Roundabout</option>
+                            <option value="4">Slip Road</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="number_of_passengers" class="form-label">Number of Passengers</label>
+                        <input type="number" class="form-control" id="number_of_passengers" name="number_of_passengers" required>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Predict Severity</button>
+                    </div>
+                </form>
+                
+                {% if show_prediction %}
+                <div class="mt-4">
+                    <div class="alert {% if 'Minor' in prediction_text %}alert-success{% else %}alert-danger{% endif %}">
+                        {{ prediction_text }}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

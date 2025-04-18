@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Visualizations - Accident Severity Prediction{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2 class="text-center mb-4">Accident Data Visualizations</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h4>Confusion Matrix</h4>
+            </div>
+            <div class="card-body">
+                <img src="{{ url_for('static', filename='images/confusion_matrix.png') }}" 
+                     alt="Confusion Matrix" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h4>Feature Importance</h4>
+            </div>
+            <div class="card-body">
+                <img src="{{ url_for('static', filename='images/feature_importance.png') }}" 
+                     alt="Feature Importance" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h4>Accident Severity Distribution</h4>
+            </div>
+            <div class="card-body">
+                <img src="{{ url_for('static', filename='images/severity_distribution.png') }}" 
+                     alt="Severity Distribution" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h4>Road Type Analysis</h4>
+            </div>
+            <div class="card-body">
+                <img src="{{ url_for('static', filename='images/road_type_analysis.png') }}" 
+                     alt="Road Type Analysis" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
